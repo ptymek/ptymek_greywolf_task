@@ -1,0 +1,27 @@
+Dzień dobry Paweł,
+
+dziękujemy za Twoją aplikację na stanowisko Vibe Coder w Greywolf Group. Twoja aplikacja nas zainteresowała i zapraszamy Cię do kolejnego etapu rekrutacji.
+
+Na start ważna informacja: szukamy osoby do pracy na miejscu w naszej agencji w Warszawie.
+
+Zadanie testowe
+Twoim zadaniem jest zbudowanie aplikacji webowej PDF Insight, która wczytuje plik PDF, tworzy jego krótkie podsumowanie i zamienia treść w uporządkowane dane JSON. Aplikacja ma być publicznie dostępna na GitHub Pages.
+Szczegółowy brief (zakres, stack, schemat danych, standardy i kryteria oceny) znajdziesz w załączniku Brief_Vibe_Coder_PDF_Insight.pdf. Do testów możesz użyć dołączonego pliku Test_PDF_Insight_umowa_14-2026.pdf.
+
+Do oddania: link do publicznego repozytorium GitHub (z plikiem AI_LOG.md) oraz link do działającego demo na GitHub Pages. W formularzu wklej link do repozytorium w polu „Link do zadania testowego”, a link do demo w polu „Komentarz do zadania”.
+
+Jak przesłać rozwiązanie
+Gdy zadanie będzie gotowe, wypełnij krótki formularz (ok. 3 minuty) i wklej w nim link do swojej pracy (Dysk Google, WeTransfer, YouTube/Vimeo, GitHub – link musi być dostępny bez logowania):
+» Formularz kandydata
+W formularzu zapytamy też o preferowaną formę współpracy i oczekiwania finansowe.
+
+Zasady zadania
+Zadanie jest elementem procesu rekrutacyjnego i ma charakter nieodpłatny – dlatego przesłane rozwiązanie wykorzystamy wyłącznie do oceny Twojej kandydatury w tej rekrutacji. Wszelkie prawa do niego, w tym autorskie prawa majątkowe, pozostają przy Tobie. Po zakończeniu rekrutacji możesz w każdej chwili usunąć udostępnione materiały lub ograniczyć do nich dostęp.
+
+Termin: 24 godziny od otrzymania tego maila, czyli do 30.10.2026, godz. 15:00
+
+W razie pytań odpowiedz na tego maila.
+
+Pozdrawiamy
+Zespół rekrutacji Greywolf Group
+office@greywolfgroup.pl
