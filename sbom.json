@@ -1,23 +1,1109 @@
 {
-  "$schema": "http://cyclonedx.org/schema/bom-1.5.json",
+  "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:7c9e6679-7425-40de-944b-ebfa07a1ec88",
+  "serialNumber": "urn:uuid:87974643-f5ac-4aa3-b261-4391cbb1086c",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-29T16:00:00Z",
+    "timestamp": "2026-10-29T16:08:47.247Z",
+    "lifecycles": [
+      {
+        "phase": "build"
+      }
+    ],
     "tools": [
       {
-        "vendor": "Greywolf Group Recruitment",
-        "name": "PDF Insight SBOM Generator",
-        "version": "1.0.0"
+        "vendor": "npm",
+        "name": "cli",
+        "version": "10.9.0"
       }
     ],
     "component": {
-      "type": "application",
-      "name": "pdf-insight",
+      "bom-ref": "pdf-insight@1.0.0",
+      "type": "library",
+      "name": "ptymek_greywolf_task",
       "version": "1.0.0",
-      "description": "Webowa aplikacja do inteligentnej analizy dokumentów PDF i ekstrakcji danych JSON dla Greywolf Group",
+      "scope": "required",
+      "purl": "pkg:npm/pdf-insight@1.0.0",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": ""
+        },
+        {
+          "name": "cdx:npm:package:private",
+          "value": "true"
+        }
+      ],
+      "externalReferences": []
+    }
+  },
+  "components": [
+    {
+      "bom-ref": "@napi-rs/canvas@0.1.100",
+      "type": "library",
+      "name": "@napi-rs/canvas",
+      "version": "0.1.100",
+      "scope": "optional",
+      "description": "Canvas for Node.js with skia backend",
+      "purl": "pkg:npm/%40napi-rs/canvas@0.1.100",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/@napi-rs/canvas"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@napi-rs/canvas/-/canvas-0.1.100.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git+https://github.com/Brooooooklyn/canvas.git"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/Brooooooklyn/canvas#readme"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/Brooooooklyn/canvas/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "c6095803aab75cee4fdc1349631559d4857b0cb563a753f2ea7c1a83cf189edad2fb7bca1f261c32a5d54b8673b499b0cf6b86bf3d455a123fe0b81b479b900c"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "@napi-rs/canvas-win32-x64-msvc@0.1.100",
+      "type": "library",
+      "name": "@napi-rs/canvas-win32-x64-msvc",
+      "version": "0.1.100",
+      "scope": "optional",
+      "description": "Canvas for Node.js with skia backend",
+      "purl": "pkg:npm/%40napi-rs/canvas-win32-x64-msvc@0.1.100",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/@napi-rs/canvas-win32-x64-msvc"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@napi-rs/canvas-win32-x64-msvc/-/canvas-win32-x64-msvc-0.1.100.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git+https://github.com/Brooooooklyn/canvas.git"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/Brooooooklyn/canvas#readme"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/Brooooooklyn/canvas/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "3324f58f79870b6f8bbb8a418bd98ac8c261b4fe94ee4ec495d63bb23fee4b980903ae604d7b7c31e7c94172c9a3977fbd96ee5a67f1ce411435cfeead5de91c"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "bmp-js@0.1.0",
+      "type": "library",
+      "name": "bmp-js",
+      "version": "0.1.0",
+      "scope": "required",
+      "author": "shaozilee",
+      "description": "A pure javascript BMP encoder and decoder",
+      "purl": "pkg:npm/bmp-js@0.1.0",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/bmp-js"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/bmp-js/-/bmp-js-0.1.0.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git+https://github.com/shaozilee/bmp-js.git"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/shaozilee/bmp-js#readme"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/shaozilee/bmp-js/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "bc7752d7d0a763787088d7646aa93ddc3be354b7db11c23c9b2b38523b96ae55f585a0e6ae8a3ca38c42ce1e300fa0c657a1f1442c9abb084746a3137c446d8f"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "idb-keyval@6.3.0",
+      "type": "library",
+      "name": "idb-keyval",
+      "version": "6.3.0",
+      "scope": "required",
+      "author": "Jake Archibald",
+      "description": "A super-simple-small keyval store built on top of IndexedDB",
+      "purl": "pkg:npm/idb-keyval@6.3.0",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/idb-keyval"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/idb-keyval/-/idb-keyval-6.3.0.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git+https://github.com/jakearchibald/idb-keyval.git"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/jakearchibald/idb-keyval#readme"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/jakearchibald/idb-keyval/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "ba6fb6760016998b2eeb5e445e9595c1299aa4984e3741b8deddca6bf1156a88733d05d232a284a9e0cafe8216dcec3e057685d8fbd273ea014c5a7bf770393b"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "is-electron@2.2.2",
+      "type": "library",
+      "name": "is-electron",
+      "version": "2.2.2",
+      "scope": "required",
+      "author": "Cheton Wu",
+      "description": "Detect if running in Electron.",
+      "purl": "pkg:npm/is-electron@2.2.2",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/is-electron"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/is-electron/-/is-electron-2.2.2.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git+ssh://git@github.com/cheton/is-electron.git"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/cheton/is-electron"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/cheton/is-electron/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "14efd186fcf9b6ec383025a4a4ccc714a583d8bb1f1f321bee2e8c74f619fca5bb025c5ac322e4a9dcbe8cf64fd56b9ba840031373b815410d9491c37d001246"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "is-url@1.2.4",
+      "type": "library",
+      "name": "is-url",
+      "version": "1.2.4",
+      "scope": "required",
+      "description": "Check whether a string is a URL.",
+      "purl": "pkg:npm/is-url@1.2.4",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/is-url"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/is-url/-/is-url-1.2.4.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git+https://github.com/segmentio/is-url.git"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/segmentio/is-url#readme"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/segmentio/is-url/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "213bc68a6f058518987b8210e6e1d2923ee955a3c3ac24e435ddf2ab7715ee26407097474d430f3041dca923b2f7167da857a7402be2fb6c231fd6b59d7a87c3"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "loose-envify@1.4.0",
+      "type": "library",
+      "name": "loose-envify",
+      "version": "1.4.0",
+      "scope": "required",
+      "author": "Andres Suarez",
+      "description": "Fast (and loose) selective `process.env` replacer using js-tokens instead of an AST",
+      "purl": "pkg:npm/loose-envify@1.4.0",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/loose-envify"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/loose-envify/-/loose-envify-1.4.0.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git://github.com/zertosh/loose-envify.git"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/zertosh/loose-envify"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/zertosh/loose-envify/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "972bb13c6aff59f86b95e9b608bfd472751cd7372a280226043cee918ed8e45ff242235d928ebe7d12debe5c351e03324b0edfeb5d54218e34f04b71452a0add"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "lucide-react@0.460.0",
+      "type": "library",
+      "name": "lucide-react",
+      "version": "0.460.0",
+      "scope": "required",
+      "author": "Eric Fennis",
+      "description": "A Lucide icon library package for React applications",
+      "purl": "pkg:npm/lucide-react@0.460.0",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/lucide-react"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/lucide-react/-/lucide-react-0.460.0.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git+https://github.com/lucide-icons/lucide.git"
+        },
+        {
+          "type": "website",
+          "url": "https://lucide.dev"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/lucide-icons/lucide/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "055b6afc3ca455e22f45326f440802b0ec1a18bf149f707187c31b0f13211169596b2dd3e08a44283129c2de4a674289307ce09ba8eb96dc654f97973965c31e"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "node-fetch@2.7.0",
+      "type": "library",
+      "name": "node-fetch",
+      "version": "2.7.0",
+      "scope": "required",
+      "author": "David Frank",
+      "description": "A light-weight module that brings window.fetch to node.js",
+      "purl": "pkg:npm/node-fetch@2.7.0",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/node-fetch"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/node-fetch/-/node-fetch-2.7.0.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git+https://github.com/bitinn/node-fetch.git"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/bitinn/node-fetch"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/bitinn/node-fetch/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "7381517d49bf75b71667b53ed56ab40300b214bfb79edd9b130d39c1fc52cfe0d6a56b22b609928189b2d9d41d5b2282d7af7810b3ea32cfd8cd448da332edf0"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "opencollective-postinstall@2.0.3",
+      "type": "library",
+      "name": "opencollective-postinstall",
+      "version": "2.0.3",
+      "scope": "required",
+      "author": "Xavier Damman",
+      "description": "Lightweight npm postinstall message to invite people to donate to your collective",
+      "purl": "pkg:npm/opencollective-postinstall@2.0.3",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/opencollective-postinstall"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/opencollective-postinstall/-/opencollective-postinstall-2.0.3.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git+https://github.com/opencollective/opencollective-postinstall.git"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/opencollective/opencollective-postinstall#readme"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/opencollective/opencollective-postinstall/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "f0057fb02b6ecd4793a3c8102b9a83673011aee941dde82d2f3160b5ea81dad713e0cc3b07c2adec97031e696d8f3e853801ecbd37af93bd206446e1338652f5"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "pdfjs-dist@4.10.38",
+      "type": "library",
+      "name": "pdfjs-dist",
+      "version": "4.10.38",
+      "scope": "required",
+      "description": "Generic build of Mozilla's PDF.js library.",
+      "purl": "pkg:npm/pdfjs-dist@4.10.38",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/pdfjs-dist"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/pdfjs-dist/-/pdfjs-dist-4.10.38.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git+https://github.com/mozilla/pdf.js.git"
+        },
+        {
+          "type": "website",
+          "url": "https://mozilla.github.io/pdf.js/"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/mozilla/pdf.js/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "fd8ddf705ad7100b0c8c95de2fd27cf991bd534d4b6ee59a632a6f0d6db2716d632f6ebd2f78ecdc35418c3274529f4da75baa0d7b03ad18a11c036164e97075"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "react@18.3.1",
+      "type": "library",
+      "name": "react",
+      "version": "18.3.1",
+      "scope": "required",
+      "description": "React is a JavaScript library for building user interfaces.",
+      "purl": "pkg:npm/react@18.3.1",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/react"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/react/-/react-18.3.1.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git+https://github.com/facebook/react.git"
+        },
+        {
+          "type": "website",
+          "url": "https://reactjs.org/"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/facebook/react/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "c12fa1020252851d0a844bcf240adfb8f54dd7e1f3d6dd18ea7e632eb1906e46f8bab80f13fd11bdefb590c075bffa16807826e1621c57e8bb176a53563fb689"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "react-dom@18.3.1",
+      "type": "library",
+      "name": "react-dom",
+      "version": "18.3.1",
+      "scope": "required",
+      "description": "React package for working with the DOM.",
+      "purl": "pkg:npm/react-dom@18.3.1",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/react-dom"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/react-dom/-/react-dom-18.3.1.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git+https://github.com/facebook/react.git"
+        },
+        {
+          "type": "website",
+          "url": "https://reactjs.org/"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/facebook/react/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "e66e2740aa7ead945bd3d2cd1f9f463380714e1f76e75ff295b2886e97bb4e91b17c9fbd92fe812e42c15c88e3b296e06e720136a948db7b519d3593d2c9d423"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "regenerator-runtime@0.13.11",
+      "type": "library",
+      "name": "regenerator-runtime",
+      "version": "0.13.11",
+      "scope": "required",
+      "author": "Ben Newman",
+      "description": "Runtime for Regenerator-compiled generator and async functions.",
+      "purl": "pkg:npm/regenerator-runtime@0.13.11",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/regenerator-runtime"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.11.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git+https://github.com/facebook/regenerator.git#main"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/facebook/regenerator/tree/main#readme"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/facebook/regenerator/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "918d40655af645afadfa9895689e20c5a15a45e6551f8d0028da3b5025fa5be744c01a3fda8649cea7ee375a8bab5a0be39a39e9c3da4d710bc2b4e1f05a6082"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "scheduler@0.23.2",
+      "type": "library",
+      "name": "scheduler",
+      "version": "0.23.2",
+      "scope": "required",
+      "description": "Cooperative scheduler for the browser environment.",
+      "purl": "pkg:npm/scheduler@0.23.2",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/scheduler"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/scheduler/-/scheduler-0.23.2.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git+https://github.com/facebook/react.git"
+        },
+        {
+          "type": "website",
+          "url": "https://reactjs.org/"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/facebook/react/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "50e4a1b0fc33ecdacc52a851eadd215a315dbaf3b36edbfbb680c7d7f848adf44d2030679c159dd02c094c6bd3a67815966c0609d3fdfd997fb55ac3a9cb98cd"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "tesseract.js@5.1.1",
+      "type": "library",
+      "name": "tesseract.js",
+      "version": "5.1.1",
+      "scope": "required",
+      "description": "Pure Javascript Multilingual OCR",
+      "purl": "pkg:npm/tesseract.js@5.1.1",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/tesseract.js"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/tesseract.js/-/tesseract.js-5.1.1.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git+https://github.com/naptha/tesseract.js.git"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/naptha/tesseract.js"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/naptha/tesseract.js/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "973565fc0af73f7ce1a544f7d4d8ea782a357fe0f9f987e967927ad9ea364b5e103553a61c14ed6dc8479bf6006ce38ecc27a016729fe01dd08a1f4bba575c61"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "tesseract.js-core@5.1.1",
+      "type": "library",
+      "name": "tesseract.js-core",
+      "version": "5.1.1",
+      "scope": "required",
+      "author": "antimatter15",
+      "description": "Tesseract C++ API in Pure Javascript",
+      "purl": "pkg:npm/tesseract.js-core@5.1.1",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/tesseract.js-core"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/tesseract.js-core/-/tesseract.js-core-5.1.1.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git+https://github.com/naptha/tesseract.js-core.git"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/naptha/tesseract.js-core"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/naptha/tesseract.js-core/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "297ddb61253988670ed5725af9018f6e2f998e8daaaba78184d8d2191e44e6ad09b739288a924a394403ee987c905cad78211f110d266962eef0c097b6f5f9b9"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "tr46@0.0.3",
+      "type": "library",
+      "name": "tr46",
+      "version": "0.0.3",
+      "scope": "required",
+      "author": "Sebastian Mayr",
+      "description": "An implementation of the Unicode TR46 spec",
+      "purl": "pkg:npm/tr46@0.0.3",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/tr46"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/tr46/-/tr46-0.0.3.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git+https://github.com/Sebmaster/tr46.js.git"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/Sebmaster/tr46.js#readme"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/Sebmaster/tr46.js/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "37758cb2ea95eba953df40ab5cd6c48f1e06130968c37bfaaebe2609cbfaa6b9dfc214b4d6b920c857633cd05877d6ebecba57575f849a1d357c79ead86760af"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "wasm-feature-detect@1.9.0",
+      "type": "library",
+      "name": "wasm-feature-detect",
+      "version": "1.9.0",
+      "scope": "required",
+      "author": "Surma",
+      "description": "A small library to detect which features of WebAssembly are supported in your current browser.",
+      "purl": "pkg:npm/wasm-feature-detect@1.9.0",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/wasm-feature-detect"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/wasm-feature-detect/-/wasm-feature-detect-1.9.0.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git+https://github.com/GoogleChromeLabs/wasm-feature-detect.git"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/GoogleChromeLabs/wasm-feature-detect#readme"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/GoogleChromeLabs/wasm-feature-detect/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "ce89c4fb1948218b713f2fbe2f6e28c348400fc08809be3e1603f244e7776eec9722ab09bd410390181f082a1739dd47bb70d4af418e7e73c875c195f98a4d68"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "webidl-conversions@3.0.1",
+      "type": "library",
+      "name": "webidl-conversions",
+      "version": "3.0.1",
+      "scope": "required",
+      "author": "Domenic Denicola",
+      "description": "Implements the WebIDL algorithms for converting to and from JavaScript values",
+      "purl": "pkg:npm/webidl-conversions@3.0.1",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/webidl-conversions"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/webidl-conversions/-/webidl-conversions-3.0.1.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git+https://github.com/jsdom/webidl-conversions.git"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/jsdom/webidl-conversions#readme"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/jsdom/webidl-conversions/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "d89027df3f0047aae32bc4a6f28ad10b487f6dc97f0ea2fbb513dd199e08d428dd17e11a30b998c411f25ee28bf38f5eb9c3c586f068c4cb1f95f39bf24c5a79"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-2-Clause"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "whatwg-url@5.0.0",
+      "type": "library",
+      "name": "whatwg-url",
+      "version": "5.0.0",
+      "scope": "required",
+      "author": "Sebastian Mayr",
+      "description": "An implementation of the WHATWG URL Standard's URL API and parsing machinery",
+      "purl": "pkg:npm/whatwg-url@5.0.0",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/whatwg-url"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/whatwg-url/-/whatwg-url-5.0.0.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git+https://github.com/jsdom/whatwg-url.git"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/jsdom/whatwg-url#readme"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/jsdom/whatwg-url/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "b1a139ee7ba9c64eafdc7637e7e8f307061ad2b292cb45d1f094b164fc202ebef2b34201ce11af880d7f4d41892e6495aacf296fd027bc809712e3872e9ad84f"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "zlibjs@0.3.1",
+      "type": "library",
+      "name": "zlibjs",
+      "version": "0.3.1",
+      "scope": "required",
+      "author": "Yuta Imaya",
+      "description": "zlib, gzip and zip implementation in JavaScript",
+      "purl": "pkg:npm/zlibjs@0.3.1",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/zlibjs"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/zlibjs/-/zlibjs-0.3.1.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git://github.com/imaya/zlib.js.git"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/imaya/zlib.js"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/imaya/zlib.js/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "f89f51ae04ca3a69711520c7a34a48d7133a04b554bfea34653f4036d0b11a48c8542094771f5a95417c1a6f9d18b29b9249227562071436470cca5f213b78fb"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "zod@3.25.76",
+      "type": "library",
+      "name": "zod",
+      "version": "3.25.76",
+      "scope": "required",
+      "author": "Colin McDonnell",
+      "description": "TypeScript-first schema declaration and validation library with static type inference",
+      "purl": "pkg:npm/zod@3.25.76",
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/zod"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/zod/-/zod-3.25.76.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "git+https://github.com/colinhacks/zod.git"
+        },
+        {
+          "type": "website",
+          "url": "https://zod.dev"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/colinhacks/zod/issues"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "83352dfeab7cd675ec14628815c0b76277c4031e4d92e9c27e70e5bee0524854b4d9b717bb82e679ad001485306cb5b158fc7777da7c4b94286ae8ca70d43171"
+        }
+      ],
       "licenses": [
         {
           "license": {
@@ -26,71 +1112,140 @@
         }
       ]
     }
-  },
-  "components": [
+  ],
+  "dependencies": [
     {
-      "type": "library",
-      "name": "react",
-      "version": "^18.3.1",
-      "description": "The library for web and native user interfaces",
-      "licenses": [{ "license": { "id": "MIT" } }],
-      "purl": "pkg:npm/react@18.3.1"
+      "ref": "pdf-insight@1.0.0",
+      "dependsOn": [
+        "lucide-react@0.460.0",
+        "pdfjs-dist@4.10.38",
+        "react@18.3.1",
+        "react-dom@18.3.1",
+        "tesseract.js@5.1.1",
+        "zod@3.25.76"
+      ]
     },
     {
-      "type": "library",
-      "name": "react-dom",
-      "version": "^18.3.1",
-      "description": "React package for working with the DOM.",
-      "licenses": [{ "license": { "id": "MIT" } }],
-      "purl": "pkg:npm/react-dom@18.3.1"
+      "ref": "@napi-rs/canvas@0.1.100",
+      "dependsOn": [
+        "@napi-rs/canvas-win32-x64-msvc@0.1.100"
+      ]
     },
     {
-      "type": "library",
-      "name": "pdfjs-dist",
-      "version": "^4.10.38",
-      "description": "PDF reader and parser in JavaScript",
-      "licenses": [{ "license": { "id": "Apache-2.0" } }],
-      "purl": "pkg:npm/pdfjs-dist@4.10.38"
+      "ref": "@napi-rs/canvas-win32-x64-msvc@0.1.100",
+      "dependsOn": []
     },
     {
-      "type": "library",
-      "name": "zod",
-      "version": "^3.24.1",
-      "description": "TypeScript-first schema declaration and validation library with static type inference",
-      "licenses": [{ "license": { "id": "MIT" } }],
-      "purl": "pkg:npm/zod@3.24.1"
+      "ref": "bmp-js@0.1.0",
+      "dependsOn": []
     },
     {
-      "type": "library",
-      "name": "lucide-react",
-      "version": "^0.460.0",
-      "description": "Beautiful & consistent icon toolkit made by the community",
-      "licenses": [{ "license": { "id": "ISC" } }],
-      "purl": "pkg:npm/lucide-react@0.460.0"
+      "ref": "idb-keyval@6.3.0",
+      "dependsOn": []
     },
     {
-      "type": "library",
-      "name": "vite",
-      "version": "^6.0.7",
-      "description": "Next generation frontend tooling",
-      "licenses": [{ "license": { "id": "MIT" } }],
-      "purl": "pkg:npm/vite@6.0.7"
+      "ref": "is-electron@2.2.2",
+      "dependsOn": []
     },
     {
-      "type": "library",
-      "name": "typescript",
-      "version": "^5.7.3",
-      "description": "TypeScript is a language for application scale JavaScript development",
-      "licenses": [{ "license": { "id": "Apache-2.0" } }],
-      "purl": "pkg:npm/typescript@5.7.3"
+      "ref": "is-url@1.2.4",
+      "dependsOn": []
     },
     {
-      "type": "library",
-      "name": "vitest",
-      "version": "^2.1.8",
-      "description": "Next generation testing framework powered by Vite",
-      "licenses": [{ "license": { "id": "MIT" } }],
-      "purl": "pkg:npm/vitest@2.1.8"
+      "ref": "loose-envify@1.4.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "lucide-react@0.460.0",
+      "dependsOn": [
+        "react@18.3.1"
+      ]
+    },
+    {
+      "ref": "node-fetch@2.7.0",
+      "dependsOn": [
+        "whatwg-url@5.0.0"
+      ]
+    },
+    {
+      "ref": "opencollective-postinstall@2.0.3",
+      "dependsOn": []
+    },
+    {
+      "ref": "pdfjs-dist@4.10.38",
+      "dependsOn": [
+        "@napi-rs/canvas@0.1.100"
+      ]
+    },
+    {
+      "ref": "react@18.3.1",
+      "dependsOn": [
+        "loose-envify@1.4.0"
+      ]
+    },
+    {
+      "ref": "react-dom@18.3.1",
+      "dependsOn": [
+        "react@18.3.1",
+        "loose-envify@1.4.0",
+        "scheduler@0.23.2"
+      ]
+    },
+    {
+      "ref": "regenerator-runtime@0.13.11",
+      "dependsOn": []
+    },
+    {
+      "ref": "scheduler@0.23.2",
+      "dependsOn": [
+        "loose-envify@1.4.0"
+      ]
+    },
+    {
+      "ref": "tesseract.js@5.1.1",
+      "dependsOn": [
+        "bmp-js@0.1.0",
+        "idb-keyval@6.3.0",
+        "is-electron@2.2.2",
+        "is-url@1.2.4",
+        "node-fetch@2.7.0",
+        "opencollective-postinstall@2.0.3",
+        "regenerator-runtime@0.13.11",
+        "tesseract.js-core@5.1.1",
+        "wasm-feature-detect@1.9.0",
+        "zlibjs@0.3.1"
+      ]
+    },
+    {
+      "ref": "tesseract.js-core@5.1.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "tr46@0.0.3",
+      "dependsOn": []
+    },
+    {
+      "ref": "wasm-feature-detect@1.9.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "webidl-conversions@3.0.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "whatwg-url@5.0.0",
+      "dependsOn": [
+        "tr46@0.0.3",
+        "webidl-conversions@3.0.1"
+      ]
+    },
+    {
+      "ref": "zlibjs@0.3.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "zod@3.25.76",
+      "dependsOn": []
     }
   ]
 }

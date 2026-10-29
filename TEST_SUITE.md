@@ -24,9 +24,20 @@ npm run test:watch
 | **AUTO-05** | `tests/schema.test.ts` | Weryfikacja dozwolonych typów dokumentu | Akceptacja wyłącznie: `"faktura" \| "umowa" \| "oferta" \| "raport" \| "inne"`. Dowolna inna wartość odrzucana. |
 | **AUTO-06** | `tests/prompt_security.test.ts` | Detekcja wstrzyknięcia z 4. strony umowy testowej (`INSTRUKCJA DLA SYSTEMU AI...`) | Funkcja `detectPromptInjectionSignatures` wykrywa sygnaturę injection. |
 | **AUTO-07** | `tests/prompt_security.test.ts` | Neutralizacja tagów granicznych (`</untrusted_document_content>`) | Funkcja `sanitizeInputText` usuwa próby zamknięcia tagu granicznego. |
-| **AUTO-08** | `tests/proxy.test.ts` | Ograniczenie liczby żądań (Rate Limiting) | 11. żądanie z tego samego IP w oknie 60 sekund zostaje odrzucone z kodem 429. |
-| **AUTO-09** | `tests/proxy.test.ts` | Logika 1 ponownej próby (Retry Logic) | W przypadku błędu formatu w 1. próbie proxy wykonuje dokładnie 1 ponowienie. |
-| **AUTO-10** | `tests/cors.test.ts` | Polityka nagłówków CORS | Żądanie z nieautoryzowanej domeny nie otrzymuje nagłówka `Access-Control-Allow-Origin: *` dla nieznanych źródeł. |
+| **AUTO-08** | `tests/proxy.test.ts` | Ograniczenie liczby żądań (Rate Limiting) | Żądanie ponad limit z tego samego IP w oknie 60 s jest odrzucane; handler zwraca **429** z `Retry-After: 60` (AUTO-08b). |
+| **AUTO-09** | `tests/proxy.test.ts` | Logika 1 ponownej próby (Retry Logic) | Błąd formatu w 1. próbie → dokładnie 1 ponowienie (2 wywołania `fetch`); po 2 nieudanych próbach komunikat „po 2 próbach”. Odpowiedź ze skutkami injection (1 PLN / „nieważna”) również wymusza ponowienie. |
+| **AUTO-10** | `tests/proxy.test.ts` | Polityka nagłówków CORS | Dozwolony origin dostaje ACAO = ten origin; nieznany origin **nigdy** nie dostaje `*` ani innego originu (AUTO-10b), a handler zwraca 403 bez wywołania AI (AUTO-10c). |
+| **AUTO-11** | `tests/schema.test.ts` | Liczba kluczowych punktów 3–7 | 2 lub 8 punktów → walidacja odrzuca wynik. |
+| **AUTO-12** | `tests/schema.test.ts` | Podsumowanie 3–5 zdań | Jednozdaniowe podsumowanie odrzucone; licznik zdań nie liczy skrótów (`sp. z o.o.`, `r.`, `S.A.`). |
+| **AUTO-13/14** | `tests/chunking.test.ts` | F-08: podział długich dokumentów | Krótki tekst = 1 fragment; długi dzielony po granicach stron, żaden fragment nie przekracza limitu, żadna strona nie ginie. |
+| **AUTO-15** | `tests/chunking.test.ts` | F-08: łączenie wyników | Połączony wynik przechodzi walidację, encje/kwoty są deduplikowane, daty sortowane chronologicznie, ≤ 7 punktów. |
+| **AUTO-16…18** | `tests/pdf_and_files.test.ts` | F-01: walidacja pliku | PDF ≤ 10 MB akceptowany; nie-PDF i plik > 10 MB odrzucone z komunikatem po polsku; sprawdzane bajty `%PDF-`. |
+| **AUTO-19** | `tests/pdf_and_files.test.ts` | F-02: strony bez warstwy tekstowej | Pusta strona (skan) oznaczana jako pusta, pomijana w tekście, bez wyjątku. |
+| **AUTO-20/21** | `tests/history.test.ts` | F-09: historia | Max 5 wpisów, najnowszy pierwszy; uszkodzone/zmanipulowane wpisy w `localStorage` są odrzucane przez Zod. |
+| **AUTO-22…25** | `tests/openapi.test.ts` | Zgodność `openapi.yaml` z kodem | Enum typów dokumentu, limity `keyPoints` (3–7), `fileName` (255) i `totalPages` (10 000) są takie same jak w Zod. Przykłady żądania i odpowiedzi 200 przechodzą walidację Zod. Specyfikacja opisuje wszystkie kody HTTP handlera. |
+| **SEC-KEY** | `tests/proxy.test.ts` | Brak wycieku klucza | Odpowiedź proxy przy błędzie upstream nie zawiera klucza API. |
+
+Dodatkowo (ręcznie, zużywa limit API): `npm run e2e:live` – pełny przepływ na pliku testowym (pdf.js → proxy → OpenRouter → Zod) z wypisaniem wyniku i telemetrii injection.
 
 ---
 

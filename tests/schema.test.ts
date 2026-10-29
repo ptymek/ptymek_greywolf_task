@@ -1,9 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import {
-  validateAnalysisResult,
-  PdfAnalysisResultSchema,
-  DocumentMetadataSchema,
-} from '../src/lib/schema';
+import { validateAnalysisResult, countSentences } from '../src/lib/schema';
 
 describe('PDF Insight Schema Validation (Brief Section 04)', () => {
   const validMockData = {
@@ -100,5 +96,54 @@ describe('PDF Insight Schema Validation (Brief Section 04)', () => {
     };
     const result = validateAnalysisResult(invalidTypeData);
     expect(result.success).toBe(false);
+  });
+
+  it('AUTO-11: enforces 3–7 key points (brief section 04)', () => {
+    const tooFew = validateAnalysisResult({ ...validMockData, keyPoints: ['a', 'b'] });
+    const tooMany = validateAnalysisResult({
+      ...validMockData,
+      keyPoints: ['1', '2', '3', '4', '5', '6', '7', '8'],
+    });
+    expect(tooFew.success).toBe(false);
+    expect(tooMany.success).toBe(false);
+  });
+
+  it('AUTO-12: rejects a one-sentence summary', () => {
+    const result = validateAnalysisResult({
+      ...validMockData,
+      summary: 'Umowa dotyczy wdrożenia CRM.',
+    });
+    expect(result.success).toBe(false);
+    expect(result.error).toContain('3 do 5 zdań');
+  });
+
+  it('countSentences ignores Polish abbreviations and dates', () => {
+    expect(
+      countSentences(
+        'Umowę zawarto 12.03.2026 r. pomiędzy Nordwave Logistics sp. z o.o. a Kwadrat Software S.A. we Wrocławiu. Wynagrodzenie wynosi 184 500,00 zł netto. Go-live zaplanowano na 12 października 2026 r.',
+      ),
+    ).toBe(3);
+  });
+
+  it('rejects non ISO 639-1 language codes and impossible dates', () => {
+    const badLang = validateAnalysisResult({
+      ...validMockData,
+      document: { ...validMockData.document, language: 'polski' },
+    });
+    const badDate = validateAnalysisResult({
+      ...validMockData,
+      dates: [{ date: '2026-13-45', context: 'błędna data' }],
+    });
+    expect(badLang.success).toBe(false);
+    expect(badDate.success).toBe(false);
+  });
+
+  it('fills missing optional arrays with [] instead of guessing', () => {
+    const { amounts: _a, dates: _d, keywords: _k, ...rest } = validMockData;
+    const result = validateAnalysisResult(rest);
+    expect(result.success).toBe(true);
+    expect(result.data?.amounts).toEqual([]);
+    expect(result.data?.dates).toEqual([]);
+    expect(result.data?.keywords).toEqual([]);
   });
 });

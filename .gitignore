@@ -6,6 +6,8 @@ api_key.txt
 .env.local
 .env.*.local
 *.secret
+.dev.vars
+.dev.vars.*
 
 # Dependencies
 node_modules/

@@ -28,7 +28,7 @@ flowchart TB
     end
 
     subgraph EdgeLayer ["Warstwa Brzegowa (Serverless Proxy / BFF)"]
-        Gate["API Gateway / Edge Proxy (Cloudflare / Vercel)"]
+        Gate["Cloudflare Worker (api/worker.ts → api/proxy.ts)"]
         RateLimiter["In-Memory Rate Limiter (IP Sliding Window)"]
         CorsGuard["CORS Enforcement Policy"]
         PromptEngine["Prompt Sanitizer & Injection Detector"]
@@ -37,7 +37,7 @@ flowchart TB
     end
 
     subgraph ExternalServices ["Zewnętrzne Usługi AI"]
-        LLM["OpenRouter API (Llama 3.3 70B / Claude 3.5)"]
+        LLM["OpenRouter API (darmowe modele z fallbackiem, konfigurowalne)"]
     end
 
     UI -->|"1. Wgranie PDF (drag & drop)"| Worker
@@ -175,10 +175,10 @@ Zgodnie z metodyką **OWASP Top 10 for LLM Applications** oraz wytycznymi briefu
 
 | Wektor Zagrożenia | Identyfikator OWASP | Zastosowany Środek Bezpieczeństwa w Architekturze |
 |---|---|---|
-| **Prompt Injection** | LLM01 | Architektura *Boundary Boxing* w [`src/lib/prompt.ts`](file:///c:/Users/T0248638/Documents/GitHub/ptymek_greywolf_task/src/lib/prompt.ts). Tekst PDF zamykany w `<untrusted_document_content>` z systemową instrukcją ignorowania wszelkich poleceń wewnątrz dokumentu oraz telemetrią sygnatur. |
-| **Wyciek Klucza API (Kryterium Dyskwalifikacji)** | LLM06 / SEC | Klucz `OPENROUTER_API_KEY` istnieje wyłącznie w zmiennych środowiskowych serwera/Edge. Pliki `.env*` oraz `api_key.txt` wykluczone w [`.gitignore`](file:///c:/Users/T0248638/Documents/GitHub/ptymek_greywolf_task/.gitignore). Frontend SPA nie posiada dostępu do klucza. |
+| **Prompt Injection** | LLM01 | Architektura *Boundary Boxing* w [`src/lib/prompt.ts`](./src/lib/prompt.ts). Tekst PDF zamykany w `<untrusted_document_content>` z systemową instrukcją ignorowania wszelkich poleceń wewnątrz dokumentu oraz telemetrią sygnatur. |
+| **Wyciek Klucza API (Kryterium Dyskwalifikacji)** | LLM06 / SEC | Klucz `OPENROUTER_API_KEY` istnieje wyłącznie w zmiennych środowiskowych serwera/Edge. Pliki `.env*` oraz `api_key.txt` wykluczone w [`.gitignore`](./.gitignore). Frontend SPA nie posiada dostępu do klucza. |
 | **Ataki XSS (Cross-Site Scripting)** | Client SEC | Bezwzględny zakaz stosowania `dangerouslySetInnerHTML`. Podgląd JSON formatowany w bezpiecznych elementach tekstowych React. |
-| **DDoS / Wyczerpanie Budżetu API** | LLM04 | Mechanizm *In-Memory Sliding Window Rate Limiting* w [`api/proxy.ts`](file:///c:/Users/T0248638/Documents/GitHub/ptymek_greywolf_task/api/proxy.ts) ograniczający żądania do max 10/min na adres IP. |
+| **DDoS / Wyczerpanie Budżetu API** | LLM04 | Mechanizm *In-Memory Sliding Window Rate Limiting* w [`api/proxy.ts`](./api/proxy.ts) ograniczający żądania do max 10/min na adres IP. |
 | **Złośliwe / Przerośnięte Pliki (Zip-bomb / PDF-bomb)** | DoS | Weryfikacja nagłówka `application/pdf` oraz natychmiastowe odrzucenie plików > 10 MB w komponencie `FileUploadDropzone` przed alokacją pamięci. |
 | **Ataki CSRF / Nieautoryzowane Użycie Proxy** | Web SEC | Restrykcyjne nagłówki `Access-Control-Allow-Origin` dopuszczające wyłącznie zarejestrowaną domenę demo GitHub Pages oraz lokalne środowisko dev. |
 | **Zgodność z RODO / Transparentność AI** | Legal / Privacy | Stały, wyraźny indykator w interfejsie informujący użytkownika: *"Plik trafia do API AI"*. |
@@ -211,15 +211,18 @@ stateDiagram-v2
 
 ## 7. Wdrożenie i Pipeline CI/CD
 
-Pipeline wdrożeniowy zrealizowany w GitHub Actions ([`.github/workflows/deploy.yml`](file:///c:/Users/T0248638/Documents/GitHub/ptymek_greywolf_task/.github/workflows/deploy.yml)) zapewnia pełną weryfikację jakości przed publikacją na GitHub Pages:
+Pipeline wdrożeniowy zrealizowany w GitHub Actions ([`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml)) zapewnia pełną weryfikację jakości przed publikacją na GitHub Pages:
 
 1. **Job: `lint-and-test`**:
-   - `npx tsc --noEmit` — weryfikacja statyczna typów w trybie `strict` (zero błędów, zero `any`).
-   - `npm test` — uruchomienie całego pakietu testów jednostkowych, schematu Zod i bezpieczeństwa promptu.
-2. **Job: `build-and-deploy`**:
-   - Uruchamiany wyłącznie po zielonym przejściu testów na gałęzi `main`.
-   - Generowanie paczki produkcyjnej Vite z uwzględnieniem ścieżki bazowej `base: './'`.
+   - `npm run lint` (ESLint: `no-explicit-any`, `no-console`, zakaz `dangerouslySetInnerHTML`) i `npm run format:check` (Prettier).
+   - `npm run typecheck` — TypeScript `strict` dla aplikacji, proxy, testów i `vite.config.ts`.
+   - `npm test` — pakiet Vitest (schemat, bezpieczeństwo promptu, proxy/CORS/retry, chunking, historia).
+2. **Job: `build-and-deploy`** (tylko push na `main`):
+   - Weryfikacja, że ustawiono zmienną repozytorium `VITE_API_URL` (publiczny adres Workera).
+   - Build Vite z `VITE_BASE_PATH=/<nazwa-repo>/`.
    - Publikacja artefaktu do środowiska GitHub Pages.
+
+Backend proxy jest wdrażany osobno jako **Cloudflare Worker** (`wrangler.toml`, `npx wrangler deploy`), a klucz API trafia do niego jako sekret (`wrangler secret put`). Lokalnie ten sam handler (`handleAnalyzeRequest`) obsługuje middleware serwera Vite. Instrukcja: [`DEPLOY.md`](./DEPLOY.md).
 
 ---
 
