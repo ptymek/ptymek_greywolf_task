@@ -1,0 +1,96 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.5.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:7c9e6679-7425-40de-944b-ebfa07a1ec88",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-29T16:00:00Z",
+    "tools": [
+      {
+        "vendor": "Greywolf Group Recruitment",
+        "name": "PDF Insight SBOM Generator",
+        "version": "1.0.0"
+      }
+    ],
+    "component": {
+      "type": "application",
+      "name": "pdf-insight",
+      "version": "1.0.0",
+      "description": "Webowa aplikacja do inteligentnej analizy dokumentów PDF i ekstrakcji danych JSON dla Greywolf Group",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "name": "react",
+      "version": "^18.3.1",
+      "description": "The library for web and native user interfaces",
+      "licenses": [{ "license": { "id": "MIT" } }],
+      "purl": "pkg:npm/react@18.3.1"
+    },
+    {
+      "type": "library",
+      "name": "react-dom",
+      "version": "^18.3.1",
+      "description": "React package for working with the DOM.",
+      "licenses": [{ "license": { "id": "MIT" } }],
+      "purl": "pkg:npm/react-dom@18.3.1"
+    },
+    {
+      "type": "library",
+      "name": "pdfjs-dist",
+      "version": "^4.10.38",
+      "description": "PDF reader and parser in JavaScript",
+      "licenses": [{ "license": { "id": "Apache-2.0" } }],
+      "purl": "pkg:npm/pdfjs-dist@4.10.38"
+    },
+    {
+      "type": "library",
+      "name": "zod",
+      "version": "^3.24.1",
+      "description": "TypeScript-first schema declaration and validation library with static type inference",
+      "licenses": [{ "license": { "id": "MIT" } }],
+      "purl": "pkg:npm/zod@3.24.1"
+    },
+    {
+      "type": "library",
+      "name": "lucide-react",
+      "version": "^0.460.0",
+      "description": "Beautiful & consistent icon toolkit made by the community",
+      "licenses": [{ "license": { "id": "ISC" } }],
+      "purl": "pkg:npm/lucide-react@0.460.0"
+    },
+    {
+      "type": "library",
+      "name": "vite",
+      "version": "^6.0.7",
+      "description": "Next generation frontend tooling",
+      "licenses": [{ "license": { "id": "MIT" } }],
+      "purl": "pkg:npm/vite@6.0.7"
+    },
+    {
+      "type": "library",
+      "name": "typescript",
+      "version": "^5.7.3",
+      "description": "TypeScript is a language for application scale JavaScript development",
+      "licenses": [{ "license": { "id": "Apache-2.0" } }],
+      "purl": "pkg:npm/typescript@5.7.3"
+    },
+    {
+      "type": "library",
+      "name": "vitest",
+      "version": "^2.1.8",
+      "description": "Next generation testing framework powered by Vite",
+      "licenses": [{ "license": { "id": "MIT" } }],
+      "purl": "pkg:npm/vitest@2.1.8"
+    }
+  ]
+}
