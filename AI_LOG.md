@@ -56,6 +56,12 @@ Opisuje proces projektowy, wykorzystane narzędzia, kluczowe prompty, napotkane 
 
 - **Cel**: Gwarancja 100% zgodności typów w TypeScript strict i eliminacja halucynacji.
 
+### Prompt 5: Szczegółowy Opis Architektury na Wysokim Poziomie Abstrakcji (Prompt Użytkownika)
+> **Treść promptu:**
+> *"stwórz dodatkowo dokument architecture.md, gdzie zawrzesz szczegółowy opis skonstruowanej w wysokim poziomi abstrakcji architektury tworzonego rozwiązania"*
+
+- **Cel**: Opracowanie formalnego dokumentu architektonicznego ([`architecture.md`](file:///c:/Users/T0248638/Documents/GitHub/ptymek_greywolf_task/architecture.md)) zawierającego dekompozycję warstwową, diagramy kontenerów C4, model zagrożeń OWASP LLM oraz maszyny stanów F-06.
+
 ---
 
 ### Prompt 4: Stylistyka TypeUI (Design Tokens Prompt)
