@@ -5,14 +5,70 @@
 
 ---
 
-## 🌐 Demo i zrzut ekranu
+## 🌐 Demo i zrzuty ekranu
 
 - **Działające demo**: [https://ptymek.github.io/ptymek_greywolf_task/](https://ptymek.github.io/ptymek_greywolf_task/)
 - **Repozytorium**: [https://github.com/ptymek/ptymek_greywolf_task](https://github.com/ptymek/ptymek_greywolf_task)
 
-![Zrzut ekranu PDF Insight](docs/screenshot.png)
+### Pulpit wyników analizy (Dashboard):
+![Pulpit wyników analizy PDF Insight](docs/screenshot_results.png)
 
-*(Po pierwszym wdrożeniu: wykonaj analizę pliku testowego i zapisz zrzut ekranu jako `docs/screenshot.png` – patrz [DEPLOY.md](./DEPLOY.md), krok 6.)*
+<details>
+<summary><b>Rozwiń, aby zobaczyć pozostałe widoki interfejsu (Strefa wgrywania, Historia)</b></summary>
+
+#### Strefa wgrywania dokumentu (Dropzone):
+![Strefa wgrywania pliku](docs/screenshot_dropzone.png)
+
+#### Historia analiz (boczna szuflada F-09):
+![Historia analiz w przeglądarce](docs/screenshot_history.png)
+
+</details>
+
+---
+
+## 📖 Instrukcja Obsługi (Przewodnik Krok po Kroku)
+
+Aplikacja **PDF Insight** została zaprojektowana zgodnie z filozofią *Zero-Instruction UI* – każdy użytkownik może intuicyjnie przetworzyć dokument w kilku prostych krokach:
+
+### Krok 1: Wgranie dokumentu do analizy
+1. **Wybór pliku**:
+   - Przeciągnij i upuść plik `.pdf` na centralny obszar **Dropzone**, lub
+   - Kliknij obszar dropzone, aby wybrać plik z dysku lokalnego.
+   - *Ograniczenia formatu*: wyłącznie pliki `.pdf`, rozmiar do 10 MB (walidowane natychmiast po stronie klienta).
+2. **Szybki tryb demonstracyjny (dla rekrutera)**:
+   - Jeśli nie masz pod ręką pliku PDF, kliknij przycisk **`✨ Załaduj przykładową analizę (Umowa 14/2026)`** znajdujący się tuż pod strefą upuszczania (lub otwórz stronę z parametrem `?demo=true`). Aplikacja natychmiast wyświetli kompletny pulpit ze zwalidowanymi danymi referencyjnej umowy testowej.
+
+### Krok 2: Automatyczne przetwarzanie i wskaźnik postępu
+Po wybraniu pliku aplikacja automatycznie przeprowadza 4-fazowy proces:
+- **Krok 1: Odczyt pliku** – weryfikacja nagłówka binarnego `%PDF-` oraz integralności pliku.
+- **Krok 2: Ekstrakcja tekstu** – lokalne wyodrębnienie tekstu przez silnik `pdf.js` w piaskownicy Web Workera (bez wysyłania 10 MB pliku binarnego przez sieć). W przypadku wykrycia czystych skanów (np. załącznik na stronie 11) silnik uruchamia leniwie proces OCR (`tesseract.js`).
+- **Krok 3: Analiza AI** – przesłanie tekstu do bezpiecznego backendu proxy, który zamyka dane w tagach `<untrusted_document_content>` i odpytuje model językowy OpenRouter.
+- **Krok 4: Walidacja Zod** – podwójna weryfikacja formatu sekcji 04 briefu, standardów ISO oraz spójności logicznej.
+
+### Krok 3: Przegląd zsyntetyzowanych wyników
+Pulpit prezentuje dane w czytelnych, dedykowanych kartach:
+- **Tarcza bezpieczeństwa (Prompt Injection Shield)**: Jeśli dokument zawierał złośliwe instrukcje (jak ukryty prompt na 4. stronie umowy testowej nakazujący unieważnienie umowy i kwotę 1 PLN), aplikacja wyświetla zielony baner potwierdzający wykrycie sygnatur ataku i jego pełną neutralizację.
+- **Podsumowanie wykonawcze**: 3–5 zdań w języku dokumentu syntetyzujących kluczowy przedmiot i warunki umowy.
+- **Kafelki metadanych**: Typ dokumentu, wykryty język (ISO 639-1), liczba stron, data dokumentu oraz nazwa użytego modelu AI.
+- **Kluczowe punkty**: Numerowana lista najważniejszych ustaleń biznesowych i prawnych.
+- **Podmioty**: Wyodrębnione organizacje i osoby fizyczne.
+- **Kwoty i Finanse**: Tabela kwot wraz z 3-literowym kodem waluty ISO 4217 (PLN, EUR, USD) oraz kontekstem biznesowym.
+- **Ważne terminy i daty**: Chronologiczny wykaz terminów sformatowanych w standardzie ISO 8601.
+- **Chmura słów kluczowych**: Tagi identyfikujące tematykę dokumentu.
+
+### Krok 4: Eksport i pobranie danych JSON
+- **Podgląd JSON**: Formatowany z syntax highlightingiem (zgodny w 100% ze schematem sekcji 04).
+- **Przycisk `[Kopiuj JSON]`**: Kopiuje sformatowaną strukturę do schowka systemowego (z powiadomieniem tooltip).
+- **Przycisk `[Pobierz .json]`**: Generuje i pobiera plik o nazwie `<nazwa_pliku>-insight.json`.
+
+### Krok 5: Historia analiz (F-09)
+- Kliknij przycisk **`Historia (N)`** w prawym górnym rogu nagłówka, aby wysunąć szufladę z ostatnimi 5 analizami zapisanymi w `localStorage`.
+- Kliknięcie dowolnego wpisu natychmiast przywraca kompletny pulpit bez ponownego wywoływania API.
+- Przycisk **`Wyczyść historię`** trwale usuwa zapisane wpisy z pamięci przeglądarki.
+
+### Krok 6: Obsługa błędów i ponowienie próby (F-06)
+- W przypadku problemu sieciowego lub błędu modelu aplikacja wyświetla czytelny komunikat w języku polskim oraz przycisk **`[Spróbuj ponownie]`**.
+- Kliknięcie przycisku ponawia zapytanie z zachowaniem wyekstrahowanego wcześniej tekstu (bez konieczności ponownego szukania pliku na dysku).
 
 ---
 

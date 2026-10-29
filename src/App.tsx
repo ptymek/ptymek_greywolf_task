@@ -16,6 +16,7 @@ import {
   saveToHistory,
   type HistoryEntry,
 } from './lib/history';
+import { DEMO_HISTORY_ENTRY } from './lib/demoData';
 
 type View =
   | { kind: 'idle' }
@@ -48,8 +49,23 @@ function toUserMessage(err: unknown): string {
  * Wyjście: element React z całą aplikacją (JSX.Element).
  */
 export default function App() {
-  const [view, setView] = useState<View>({ kind: 'idle' });
-  const [history, setHistory] = useState<HistoryEntry[]>(() => loadHistory());
+  const [view, setView] = useState<View>(() => {
+    if (typeof window !== 'undefined' && window.location.search.includes('demo=true')) {
+      return { kind: 'success', entry: DEMO_HISTORY_ENTRY };
+    }
+    return { kind: 'idle' };
+  });
+  const [history, setHistory] = useState<HistoryEntry[]>(() => {
+    const loaded = loadHistory();
+    if (
+      loaded.length === 0 &&
+      typeof window !== 'undefined' &&
+      window.location.search.includes('demo=true')
+    ) {
+      return [DEMO_HISTORY_ENTRY];
+    }
+    return loaded;
+  });
   const [historyOpen, setHistoryOpen] = useState(false);
   const fileRef = useRef<File | null>(null);
   const extractedRef = useRef<ExtractedDocument | null>(null);
@@ -218,6 +234,21 @@ export default function App() {
             )}
 
             <FileUploadDropzone onFile={handleFile} />
+
+            <div style={{ textAlign: 'center', marginTop: '-0.25rem', marginBottom: '1.25rem' }}>
+              <button
+                type="button"
+                className="btn btn-secondary btn-sm"
+                onClick={() => {
+                  saveToHistory(DEMO_HISTORY_ENTRY);
+                  setHistory(loadHistory());
+                  setView({ kind: 'success', entry: DEMO_HISTORY_ENTRY });
+                }}
+              >
+                <Sparkles size={14} aria-hidden="true" />
+                Załaduj przykładową analizę (Umowa 14/2026)
+              </button>
+            </div>
 
             <div className="notice" role="note">
               <Lock size={16} aria-hidden="true" />
